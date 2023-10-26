@@ -1,9 +1,9 @@
-FROM amd64/ubuntu:latest
+FROM arm64v8/ubuntu:latest
 
 # Original Server v436
 ADD files/ut-server-linux-436.tar.gz /
-# Update to 469c
-ADD files/Patches/OldUnreal-UTPatch469c-Linux-x86.tar.bz2 /ut-server/
+# Update to 469d RC2 (with ARM support)
+ADD files/Patches/OldUnreal-UTPatch469d-Linux-arm64.tar.bz2 /ut-server/
 # Fix for broken maps from the original file
 ADD files/Patches/BrokenMapsFix.tar.gz /ut-server/
 # Add the bonus packs
@@ -25,13 +25,9 @@ ADD files/Scripts/ /
 ENV UT_SERVERURL="CTF-Face?game=BotPack.CTFGame?mutator=BotPack.InstaGibDM,MVES.MapVote,FlagAnnouncementsV2.FlagAnnouncements"
 
 # Prepare the system
-RUN dpkg --add-architecture i386 \
-    && apt update \
-    && apt install -y nano curl wget python3 jq libx11-6:i386 \
+RUN apt update \
+    && apt install -y nano curl wget python3 jq libsdl2-2.0-0 \
     && rm -rf /var/lib/apt/lists/*
-
-# Create a link of this file to the missing file
-RUN ln -s /ut-server/System/libSDL-1.1.so.0 /ut-server/System/libSDL-1.2.so.0
 
 # Run the initial setup
 RUN python3 /prepare.py i
