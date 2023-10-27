@@ -20,14 +20,15 @@ ADD files/Configs/* /ut-data/System/
 ADD files/Maps/* /ut-data/Maps/
 # Startup & health scripts
 ADD files/Scripts/ /
-# Copy /ut-server/SystemARM64 in /ut-server/System (overwrite)
-RUN /bin/bash -c "cp -af /ut-server/SystemARM64/. /ut-server/System"
-RUN /bin/bash -c "rm -rf /ut-system/SystemARM64"
-RUN /bin/bash -c "chmod +x /ut-sever/ucc-bin"
-RUN /bin/bash -c "chmod +x /ut-system/ucc-bin-arm64"
 
 # Environment variables
 ENV UT_SERVERURL="CTF-Face?game=BotPack.CTFGame?mutator=BotPack.InstaGibDM,MVES.MapVote,FlagAnnouncementsV2.FlagAnnouncements"
+
+# Copy /ut-server/SystemARM64 in /ut-server/System (overwrite)
+RUN cp -af /ut-server/SystemARM64/. /ut-server/System \
+    && rm -rf /ut-system/SystemARM64 \
+    && chmod +x /ut-sever/ucc-bin \
+    && chmod +x /ut-system/ucc-bin-arm64
 
 # Prepare the system
 RUN apt update \
