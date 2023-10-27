@@ -1,5 +1,4 @@
 FROM arm64v8/ubuntu:latest
-SHELL ["/bin/bash", "-c"]
 
 # Original Server v436
 ADD files/ut-server-linux-436.tar.gz /
@@ -26,10 +25,7 @@ ADD files/Scripts/ /
 ENV UT_SERVERURL="CTF-Face?game=BotPack.CTFGame?mutator=BotPack.InstaGibDM,MVES.MapVote,FlagAnnouncementsV2.FlagAnnouncements"
 
 # Copy /ut-server/SystemARM64 in /ut-server/System (overwrite)
-RUN cp -af /ut-server/SystemARM64/. /ut-server/System \
-    && rm -rf /ut-system/SystemARM64 \
-    && chmod +x /ut-sever/ucc-bin \
-    && chmod +x /ut-system/ucc-bin-arm64
+RUN ["/bin/bash", "-c", "cp -af /ut-server/SystemARM64/. /ut-server/System"]
 
 # Prepare the system
 RUN apt update \
