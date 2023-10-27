@@ -26,6 +26,9 @@ ENV UT_SERVERURL="CTF-Face?game=BotPack.CTFGame?mutator=BotPack.InstaGibDM,MVES.
 
 # Copy /ut-server/SystemARM64 in /ut-server/System (overwrite)
 RUN ["/bin/bash", "-c", "cp -af /ut-server/SystemARM64/. /ut-server/System"]
+RUN ["/bin/bash", "-c", "rm -rf /ut-server/SystemARM64/"]
+RUN ["/bin/bash", "-c", "chmod +x /ut-server/ucc-bin"]
+RUN ["/bin/bash", "-c", "chmod +x /ut-server/ucc-bin-arm64"]
 
 # Prepare the system
 RUN apt update \
