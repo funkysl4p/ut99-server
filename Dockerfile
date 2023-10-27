@@ -24,10 +24,6 @@ ADD files/Scripts/ /
 # Environment variables
 ENV UT_SERVERURL="CTF-Face?game=BotPack.CTFGame?mutator=BotPack.InstaGibDM,MVES.MapVote,FlagAnnouncementsV2.FlagAnnouncements"
 
-# Copy /ut-server/SystemARM64 in /ut-server/System (overwrite)
-RUN ["/bin/bash", "-c", "cp -af /ut-server/SystemARM64/. /ut-server/System"]
-RUN ["/bin/bash", "-c", "rm -rf /ut-server/SystemARM64/"]
-
 # Prepare the system
 RUN apt update \
     && apt install -y nano curl wget python3 jq libsdl2-2.0-0 \
