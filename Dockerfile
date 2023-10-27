@@ -1,4 +1,5 @@
 FROM arm64v8/ubuntu:latest
+SHELL ["/bin/bash", "-c"]
 
 # Original Server v436
 ADD files/ut-server-linux-436.tar.gz /
