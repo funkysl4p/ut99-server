@@ -4,8 +4,6 @@ FROM arm64v8/ubuntu:latest
 ADD files/ut-server-linux-436.tar.gz /
 # Update to 469d RC2 (with ARM support)
 ADD files/Patches/OldUnreal-UTPatch469d-Linux-arm64.tar.bz2 /ut-server/
-# Copy /ut-server/SystemARM64 in /ut-server/System (overwrite)
-RUN CP
 # Fix for broken maps from the original file
 ADD files/Patches/BrokenMapsFix.tar.gz /ut-server/
 # Add the bonus packs
