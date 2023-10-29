@@ -15,4 +15,5 @@ chmod +x ./ucc-bin
 chmod +x ./ucc-bin-arm64
 
 # Start server
-./ucc-bin server $UT_SERVERURL ini=UnrealTournament.ini log=ut.log -nohomedir -lanplay
+# -lanplay
+./ucc-bin server $UT_SERVERURL ini=UnrealTournament.ini log=ut.log -multihome=$UT_MULTIHOME -nohomedir

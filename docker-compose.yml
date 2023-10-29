@@ -34,5 +34,6 @@ services:
       - UT_MINPLAYERS_CTF=8
       - UT_INITIALBOTS_DM=4
       - UT_INITIALBOTS_CTF=8
+      - UT_MULTIHOME=127.0.0.1
 volumes:
   ut99-data:
